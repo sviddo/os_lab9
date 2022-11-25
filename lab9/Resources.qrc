@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>handshake.png</file>
+        <file>money.png</file>
+        <file>weather.png</file>
+        <file>handshake.ico</file>
+        <file>price.png</file>
+        <file>price.ico</file>
+        <file>weather.ico</file>
+        <file>money.ico</file>
+        <file>stocks.ico</file>
+    </qresource>
+</RCC>
