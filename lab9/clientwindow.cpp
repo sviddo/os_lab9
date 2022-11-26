@@ -1,11 +1,14 @@
 #include "clientwindow.h"
 #include "ui_clientwindow.h"
 
+Ui::ClientWindow *ui_global;
+
 ClientWindow::ClientWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::ClientWindow)
 {
     ui->setupUi(this);
+    ui_global = ui;
 }
 
 ClientWindow::~ClientWindow()
@@ -23,4 +26,3 @@ void ClientWindow::on_subsWeatherAction_triggered()
         // передача сигналу до сервера
     }
 }
-
