@@ -16,13 +16,17 @@ ClientWindow::~ClientWindow()
     delete ui;
 }
 
-void ClientWindow::on_subsWeatherAction_triggered()
+void ClientWindow::on_subscribeButton_clicked()
 {
-    QStringList citiesList; bool ok = false;
-    citiesList << "Львів" << "Київ" << "Івано-Франківськ" << "Харків" << "Дніпро";
-    QString choiceCity = QInputDialog::getItem(this, "", "Оберіть місто, обновлення погоди\nз якого ви хочете бачити: ",
-                                               citiesList, false ,&ok);
-    if(ok){
-        // передача сигналу до сервера
-    }
+    std::string requestStr = "";
+    if(ui->weatherCheckBox->isChecked()){
+            QStringList citiesList; QString choiceCity = "Львів"; bool ok = false;
+            citiesList << "Львів" << "Київ" << "Івано-Франківськ" << "Харків" << "Дніпро";
+            choiceCity = QInputDialog::getItem(this, "", "Оберіть місто, обновлення погоди\nз якого ви хочете бачити: ",
+                                                       citiesList, false ,&ok);
+            requestStr += "1";
+    } else requestStr += "0";
+    requestStr += (ui->stocksCheckBox->isChecked()) ? "1" : "0";
+    requestStr += (ui->currencyCheckBox->isChecked()) ? "1" : "0";
+    const char* request = requestStr.c_str();
 }

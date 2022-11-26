@@ -18,6 +18,6 @@ public:
     Ui::ClientWindow *ui;
 
 private slots:
-    void on_subsWeatherAction_triggered();
+    void on_subscribeButton_clicked();
 };
 #endif // CLIENTWINDOW_H
