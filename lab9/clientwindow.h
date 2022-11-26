@@ -17,7 +17,8 @@ public:
     ~ClientWindow();
 
 private slots:
-    void on_subsWeatherAction_triggered();
+
+    void on_subscribeButton_clicked();
 
 private:
     Ui::ClientWindow *ui;
