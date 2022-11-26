@@ -10,16 +10,17 @@
 #define UI_CLIENTWINDOW_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -27,12 +28,6 @@ QT_BEGIN_NAMESPACE
 class Ui_ClientWindow
 {
 public:
-    QAction *subsWeatherAction;
-    QAction *subsStocksAction;
-    QAction *subsValAction;
-    QAction *unsubsWeatherAction;
-    QAction *unsubsStocksAction;
-    QAction *undubsValAction;
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QGridLayout *gridLayout_2;
@@ -79,30 +74,27 @@ public:
     QFrame *line;
     QFrame *line_10;
     QFrame *line_11;
+    QGridLayout *gridLayout_4;
+    QVBoxLayout *verticalLayout;
+    QPushButton *subscribeButton;
+    QPushButton *unsubscribeButton;
+    QVBoxLayout *verticalLayout_2;
+    QCheckBox *weatherCheckBox;
+    QCheckBox *stocksCheckBox;
+    QCheckBox *currencyCheckBox;
+    QSpacerItem *horizontalSpacer;
+    QSpacerItem *horizontalSpacer_2;
     QMenuBar *menubar;
-    QMenu *menu;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *ClientWindow)
     {
         if (ClientWindow->objectName().isEmpty())
             ClientWindow->setObjectName(QString::fromUtf8("ClientWindow"));
-        ClientWindow->resize(852, 434);
+        ClientWindow->resize(852, 486);
         ClientWindow->setStyleSheet(QString::fromUtf8("QMainWindow{\n"
 "	background-color: rgb(106, 110, 113);\n"
 "}"));
-        subsWeatherAction = new QAction(ClientWindow);
-        subsWeatherAction->setObjectName(QString::fromUtf8("subsWeatherAction"));
-        subsStocksAction = new QAction(ClientWindow);
-        subsStocksAction->setObjectName(QString::fromUtf8("subsStocksAction"));
-        subsValAction = new QAction(ClientWindow);
-        subsValAction->setObjectName(QString::fromUtf8("subsValAction"));
-        unsubsWeatherAction = new QAction(ClientWindow);
-        unsubsWeatherAction->setObjectName(QString::fromUtf8("unsubsWeatherAction"));
-        unsubsStocksAction = new QAction(ClientWindow);
-        unsubsStocksAction->setObjectName(QString::fromUtf8("unsubsStocksAction"));
-        undubsValAction = new QAction(ClientWindow);
-        undubsValAction->setObjectName(QString::fromUtf8("undubsValAction"));
         centralwidget = new QWidget(ClientWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
@@ -566,25 +558,152 @@ public:
 
         gridLayout->addLayout(gridLayout_2, 0, 0, 1, 1);
 
+        gridLayout_4 = new QGridLayout();
+        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        subscribeButton = new QPushButton(centralwidget);
+        subscribeButton->setObjectName(QString::fromUtf8("subscribeButton"));
+        subscribeButton->setMinimumSize(QSize(200, 0));
+        subscribeButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"   background-color: rgb(247, 247, 247);\n"
+"   border: 5px #000000;\n"
+"   padding: 5px;\n"
+"   border-radius: 6px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"   background-color: rgb(135, 194, 50);\n"
+"   border: 5px #000000;\n"
+"   padding: 5px;\n"
+"   border-radius: 6px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"   background-color: rgb(97, 137, 48);\n"
+"   border: 5px #000000;\n"
+"   padding: 5px;\n"
+"   border-radius: 6px;\n"
+"}"));
+
+        verticalLayout->addWidget(subscribeButton);
+
+        unsubscribeButton = new QPushButton(centralwidget);
+        unsubscribeButton->setObjectName(QString::fromUtf8("unsubscribeButton"));
+        unsubscribeButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"   background-color: rgb(247, 247, 247);\n"
+"   border: 5px #000000;\n"
+"   padding: 5px;\n"
+"   border-radius: 6px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"   background-color: rgb(135, 194, 50);\n"
+"   border: 5px #000000;\n"
+"   padding: 5px;\n"
+"   border-radius: 6px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"   background-color: rgb(97, 137, 48);\n"
+"   border: 5px #000000;\n"
+"   padding: 5px;\n"
+"   border-radius: 6px;\n"
+"}"));
+
+        verticalLayout->addWidget(unsubscribeButton);
+
+
+        gridLayout_4->addLayout(verticalLayout, 0, 1, 1, 1);
+
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        weatherCheckBox = new QCheckBox(centralwidget);
+        weatherCheckBox->setObjectName(QString::fromUtf8("weatherCheckBox"));
+        weatherCheckBox->setMinimumSize(QSize(100, 0));
+        weatherCheckBox->setStyleSheet(QString::fromUtf8("QCheckBox{\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"   background-color: rgb(231, 231, 231);\n"
+"   border: 5px #000000;\n"
+"   padding: 5px;\n"
+"   border-radius: 6px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"	background-color: rgb(97, 137, 48);\n"
+"	border-radius: 6px;\n"
+"}\n"
+""));
+
+        verticalLayout_2->addWidget(weatherCheckBox);
+
+        stocksCheckBox = new QCheckBox(centralwidget);
+        stocksCheckBox->setObjectName(QString::fromUtf8("stocksCheckBox"));
+        stocksCheckBox->setStyleSheet(QString::fromUtf8("QCheckBox{\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"   background-color: rgb(231, 231, 231);\n"
+"   border: 5px #000000;\n"
+"   padding: 5px;\n"
+"   border-radius: 6px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"	background-color: rgb(97, 137, 48);\n"
+"	border-radius: 6px;\n"
+"}\n"
+""));
+
+        verticalLayout_2->addWidget(stocksCheckBox);
+
+        currencyCheckBox = new QCheckBox(centralwidget);
+        currencyCheckBox->setObjectName(QString::fromUtf8("currencyCheckBox"));
+        currencyCheckBox->setStyleSheet(QString::fromUtf8("QCheckBox{\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"   background-color: rgb(231, 231, 231);\n"
+"   border: 5px #000000;\n"
+"   padding: 5px;\n"
+"   border-radius: 6px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"	background-color: rgb(97, 137, 48);\n"
+"	border-radius: 6px;\n"
+"}\n"
+""));
+
+        verticalLayout_2->addWidget(currencyCheckBox);
+
+
+        gridLayout_4->addLayout(verticalLayout_2, 0, 2, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_4->addItem(horizontalSpacer, 0, 3, 1, 1);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_4->addItem(horizontalSpacer_2, 0, 0, 1, 1);
+
+
+        gridLayout->addLayout(gridLayout_4, 1, 0, 1, 1);
+
         ClientWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(ClientWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 852, 26));
-        menu = new QMenu(menubar);
-        menu->setObjectName(QString::fromUtf8("menu"));
         ClientWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(ClientWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         ClientWindow->setStatusBar(statusbar);
-
-        menubar->addAction(menu->menuAction());
-        menu->addAction(subsWeatherAction);
-        menu->addAction(subsStocksAction);
-        menu->addAction(subsValAction);
-        menu->addSeparator();
-        menu->addAction(unsubsWeatherAction);
-        menu->addAction(unsubsStocksAction);
-        menu->addAction(undubsValAction);
 
         retranslateUi(ClientWindow);
 
@@ -594,12 +713,6 @@ public:
     void retranslateUi(QMainWindow *ClientWindow)
     {
         ClientWindow->setWindowTitle(QCoreApplication::translate("ClientWindow", "ClientWindow", nullptr));
-        subsWeatherAction->setText(QCoreApplication::translate("ClientWindow", "\320\237\321\226\320\264\320\277\320\270\321\201\320\260\321\202\320\270\321\201\321\214 \320\275\320\260 \320\277\320\276\320\263\320\276\320\264\321\203", nullptr));
-        subsStocksAction->setText(QCoreApplication::translate("ClientWindow", "\320\237\321\226\320\264\320\277\320\270\321\201\320\260\321\202\320\270\321\201\321\214 \320\275\320\260 \320\272\321\203\321\200\321\201 \320\260\320\272\321\206\321\226\320\271", nullptr));
-        subsValAction->setText(QCoreApplication::translate("ClientWindow", "\320\237\321\226\320\264\320\277\320\270\321\201\320\260\321\202\320\270\321\201\321\214 \320\275\320\260 \320\272\321\203\321\200\321\201 \320\262\320\260\320\273\321\216\321\202", nullptr));
-        unsubsWeatherAction->setText(QCoreApplication::translate("ClientWindow", "\320\222\321\226\320\264\320\277\320\270\321\201\320\260\321\202\320\270\321\201\321\214 \320\262\321\226\320\264 \320\277\320\276\320\263\320\276\320\264\320\270", nullptr));
-        unsubsStocksAction->setText(QCoreApplication::translate("ClientWindow", "\320\222\321\226\320\264\320\277\320\270\321\201\320\260\321\202\320\270\321\201\321\214 \320\262\321\226\320\264 \320\272\321\203\321\200\321\201\321\203 \320\260\320\272\321\206\321\226\320\271", nullptr));
-        undubsValAction->setText(QCoreApplication::translate("ClientWindow", "\320\222\321\226\320\264\320\277\320\270\321\201\320\260\321\202\320\270\321\201\321\214 \320\262\321\226\320\264 \320\272\321\203\321\200\321\201\321\203 \320\262\320\260\320\273\321\216\321\202", nullptr));
         label_4->setText(QCoreApplication::translate("ClientWindow", " Apple", nullptr));
         label_5->setText(QCoreApplication::translate("ClientWindow", " Tesla", nullptr));
         label_19->setText(QCoreApplication::translate("ClientWindow", "\320\235\320\260\320\267\320\262\320\260 \320\272\320\276\320\274\320\277\320\260\320\275\321\226\321\227", nullptr));
@@ -630,7 +743,11 @@ public:
         dateTimeLabel->setText(QString());
         label_7->setText(QCoreApplication::translate("ClientWindow", "\320\222\320\274\321\226\321\201\321\202 \320\264\320\260\320\275\320\270\321\205", nullptr));
         cityLabel->setText(QString());
-        menu->setTitle(QCoreApplication::translate("ClientWindow", "\320\234\320\265\320\275\321\216", nullptr));
+        subscribeButton->setText(QCoreApplication::translate("ClientWindow", "\320\237\321\226\320\264\320\277\320\270\321\201\320\260\321\202\320\270\321\201\321\214", nullptr));
+        unsubscribeButton->setText(QCoreApplication::translate("ClientWindow", "\320\222\321\226\320\264\320\277\320\270\321\201\320\260\321\202\320\270\321\201\321\214", nullptr));
+        weatherCheckBox->setText(QCoreApplication::translate("ClientWindow", "\320\237\320\276\320\263\320\276\320\264\320\260", nullptr));
+        stocksCheckBox->setText(QCoreApplication::translate("ClientWindow", "\320\232\321\203\321\200\321\201 \320\260\320\272\321\206\321\226\320\271", nullptr));
+        currencyCheckBox->setText(QCoreApplication::translate("ClientWindow", "\320\232\321\203\321\200\321\201 \320\262\320\260\320\273\321\216\321\202", nullptr));
     } // retranslateUi
 
 };

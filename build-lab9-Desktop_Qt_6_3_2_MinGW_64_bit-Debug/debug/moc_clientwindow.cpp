@@ -24,7 +24,7 @@ QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ClientWindow_t {
     uint offsetsAndSizes[6];
     char stringdata0[13];
-    char stringdata1[31];
+    char stringdata1[27];
     char stringdata2[1];
 };
 #define QT_MOC_LITERAL(ofs, len) \
@@ -32,11 +32,11 @@ struct qt_meta_stringdata_ClientWindow_t {
 static const qt_meta_stringdata_ClientWindow_t qt_meta_stringdata_ClientWindow = {
     {
         QT_MOC_LITERAL(0, 12),  // "ClientWindow"
-        QT_MOC_LITERAL(13, 30),  // "on_subsWeatherAction_triggered"
-        QT_MOC_LITERAL(44, 0)   // ""
+        QT_MOC_LITERAL(13, 26),  // "on_subscribeButton_clicked"
+        QT_MOC_LITERAL(40, 0)   // ""
     },
     "ClientWindow",
-    "on_subsWeatherAction_triggered",
+    "on_subscribeButton_clicked",
     ""
 };
 #undef QT_MOC_LITERAL
@@ -69,7 +69,7 @@ void ClientWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         auto *_t = static_cast<ClientWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_subsWeatherAction_triggered(); break;
+        case 0: _t->on_subscribeButton_clicked(); break;
         default: ;
         }
     }
