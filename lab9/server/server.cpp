@@ -7,19 +7,20 @@
 //used to link winsock lib
 #pragma comment(lib, "Ws2_32.lib")
 
-#define DEFAULT_PORT "5000"
+#define DEFAULT_PORT "101"
 #define BUFFER_LEN 512
 
 struct ClientData {
 	SOCKET Client;
+	HANDLE KillEvent;
 	//...
 };
 
-HANDLE KillEvent;
 
 DWORD WINAPI SendData(LPVOID lpParameter) {
 	ClientData* Data = (ClientData*)lpParameter;
 	SOCKET Client = Data->Client;
+	HANDLE KillEvent = Data->KillEvent;
 	delete Data;
 
 	//sending data to socket
@@ -35,11 +36,12 @@ DWORD WINAPI SendData(LPVOID lpParameter) {
 
 DWORD WINAPI ProcessClient(LPVOID lpParameter) {
 	SOCKET ClientSocket = (SOCKET)lpParameter;
+	std::array<HANDLE, 3> subscriptions; //weather, shares, currencies
 
 	char recvbuf[BUFFER_LEN];
 	HANDLE NewThread = NULL;
 	bool IsRunning = false;
-	KillEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
+	HANDLE KillEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
 	while (true) {
 		int iResult = recv(ClientSocket, recvbuf, BUFFER_LEN, 0);
 		if (iResult > 0) {
@@ -55,6 +57,7 @@ DWORD WINAPI ProcessClient(LPVOID lpParameter) {
 
 			ClientData *Data = new ClientData();
 			Data->Client = ClientSocket;
+			Data->KillEvent = KillEvent;
 			//...
 
 			NewThread = CreateThread(NULL, NULL, &SendData, (void*)Data, NULL, NULL);
