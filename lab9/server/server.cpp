@@ -49,7 +49,6 @@ DWORD WINAPI ProcessClient(LPVOID lpParameter) {
 			//do something
 
 			//if client subscribes
-			DWORD ThreadID = 0;
 			if (IsRunning) {
 				SetEvent(KillEvent);
 			}
