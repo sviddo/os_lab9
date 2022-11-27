@@ -129,8 +129,6 @@ int main() {
 	while (true) {
 		//accepting connections
 		SOCKET ClientSocket = INVALID_SOCKET;
-		SOCKADDR_IN ClientAddress;
-		socklen_t AddrLen = sizeof(ClientAddress);
 		while (ClientSocket == INVALID_SOCKET) {
 			ClientSocket = accept(ListenSocket, (SOCKADDR*)&ClientAddress, &AddrLen);
 		}
