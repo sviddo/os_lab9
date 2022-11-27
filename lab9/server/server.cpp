@@ -59,7 +59,7 @@ DWORD WINAPI ProcessClient(LPVOID lpParameter) {
 			Data->KillEvent = KillEvent;
 			//...
 
-			NewThread = CreateThread(NULL, NULL, &SendData, (void*)Data, NULL, NULL);
+			NewThread = CreateThread(NULL, NULL, SendData, (void*)Data, NULL, NULL);
 			IsRunning = true;
 
 			//if client cancels subscription
