@@ -36,7 +36,6 @@ DWORD WINAPI SendData(LPVOID lpParameter) {
 
 DWORD WINAPI ProcessClient(LPVOID lpParameter) {
 	SOCKET ClientSocket = (SOCKET)lpParameter;
-	std::array<HANDLE, 3> subscriptions; //weather, shares, currencies
 
 	char recvbuf[BUFFER_LEN];
 	HANDLE NewThread = NULL;
