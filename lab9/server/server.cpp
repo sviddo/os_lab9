@@ -16,7 +16,7 @@ SOCKET server_socket;
 
 typedef struct SocketData {
 	SOCKET socket;
-} SOCKET_DATA, *SOCKET_DATA_PTR;
+} SOCKET_DATA, * SOCKET_DATA_PTR;
 
 
 bool is_avaliable = true;
@@ -209,51 +209,24 @@ int main() {
 	// size of our receive buffer, this is string length
 	// set of socket descriptors
 	// fd means "file descriptors"
-	fd_set readfds; // https://docs.microsoft.com/en-us/windows/win32/api/winsock/ns-winsock-fd_set
-	SOCKET client_socket[MAX_CLIENTS] = {};
-	DWORD id;
 
 	while (true) {
-		// clear the socket fdset
-		FD_ZERO(&readfds);
-
-		// add master socket to fdset
-		FD_SET(server_socket, &readfds);
-
-		// add child sockets to fdset
-		for (int i = 0; i < MAX_CLIENTS; i++) {
-			SOCKET s = client_socket[i];
-			if (s > 0) {
-				FD_SET(s, &readfds);
-			}
-		}
-
-		// wait for an activity on any of the sockets, timeout is NULL, so wait indefinitely
-		if (select(0, &readfds, NULL, NULL, NULL) == SOCKET_ERROR) {
-			printf("select function call failed with error code : %d", WSAGetLastError());
-			return 4;
-		}
-
-		// if something happened on the master socket, then its an incoming connection
 		SOCKET new_socket; // new client socket
 		sockaddr_in address;
 		int addrlen = sizeof(sockaddr_in);
-		if (FD_ISSET(server_socket, &readfds)) {
-			if ((new_socket = accept(server_socket, (sockaddr*)&address, &addrlen)) < 0) {
-				perror("accept function error");
-				return 5;
-			}
-
-			// inform server side of socket number - used in send and recv commands
-			printf("New connection, socket fd is %d, ip is: %s, port: %d\n", new_socket, inet_ntoa(address.sin_addr), ntohs(address.sin_port));
-
-			// populate arguments for socket and start handling it
-			SOCKET_DATA_PTR args = (SOCKET_DATA_PTR)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
-				sizeof(SOCKET_DATA));;
-			args->socket = new_socket;
-			CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)handle_socket_connection, args, 0, &id);
+		if ((new_socket = accept(server_socket, (sockaddr*)&address, &addrlen)) < 0) {
+			perror("accept function error");
+			return 5;
 		}
-	}
 
+		// inform server side of socket number - used in send and recv commands
+		printf("New connection, socket fd is %d, ip is: %s, port: %d\n", new_socket, inet_ntoa(address.sin_addr), ntohs(address.sin_port));
+
+		// populate arguments for socket and start handling it
+		SOCKET_DATA_PTR args = (SOCKET_DATA_PTR)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
+			sizeof(SOCKET_DATA));;
+		args->socket = new_socket;
+		CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)handle_socket_connection, args, 0, NULL);
+	}
 	WSACleanup();
 }
