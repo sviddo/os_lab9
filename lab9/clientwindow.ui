@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>852</width>
-    <height>434</height>
+    <height>486</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -206,7 +206,10 @@
 }</string>
           </property>
           <property name="text">
-           <string> </string>
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -232,7 +235,10 @@
 }</string>
           </property>
           <property name="text">
-           <string> </string>
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -258,7 +264,10 @@
 }</string>
           </property>
           <property name="text">
-           <string> </string>
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -361,7 +370,10 @@ border-image:  url(:money.ico);
 }</string>
           </property>
           <property name="text">
-           <string> </string>
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -410,7 +422,10 @@ border-image:  url(:money.ico);
 }</string>
           </property>
           <property name="text">
-           <string> </string>
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -574,7 +589,10 @@ border-image:  url(:money.ico);
 }</string>
           </property>
           <property name="text">
-           <string> </string>
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -737,7 +755,10 @@ border-image:  url(:money.ico);
 }</string>
           </property>
           <property name="text">
-           <string> </string>
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -763,7 +784,10 @@ border-image:  url(:money.ico);
 }</string>
           </property>
           <property name="text">
-           <string> </string>
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -812,7 +836,10 @@ border-image:  url(:money.ico);
 }</string>
           </property>
           <property name="text">
-           <string> </string>
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -855,6 +882,189 @@ border-image:  url(:money.ico);
       </item>
      </layout>
     </item>
+    <item row="1" column="0">
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="1">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QPushButton" name="subscribeButton">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+   background-color: rgb(247, 247, 247);
+   border: 5px #000000;
+   padding: 5px;
+   border-radius: 6px;
+}
+
+QPushButton:hover {
+   background-color: rgb(135, 194, 50);
+   border: 5px #000000;
+   padding: 5px;
+   border-radius: 6px;
+}
+
+QPushButton:pressed {
+   background-color: rgb(97, 137, 48);
+   border: 5px #000000;
+   padding: 5px;
+   border-radius: 6px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Підписатись</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="unsubscribeButton">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+   background-color: rgb(247, 247, 247);
+   border: 5px #000000;
+   padding: 5px;
+   border-radius: 6px;
+}
+
+QPushButton:hover {
+   background-color: rgb(135, 194, 50);
+   border: 5px #000000;
+   padding: 5px;
+   border-radius: 6px;
+}
+
+QPushButton:pressed {
+   background-color: rgb(97, 137, 48);
+   border: 5px #000000;
+   padding: 5px;
+   border-radius: 6px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Відписатись</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="2">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QCheckBox" name="weatherCheckBox">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QCheckBox{
+	color: white;
+}
+
+QCheckBox::indicator {
+   background-color: rgb(231, 231, 231);
+   border: 5px #000000;
+   padding: 5px;
+   border-radius: 6px;
+}
+
+QCheckBox::indicator:checked {
+	background-color: rgb(97, 137, 48);
+	border-radius: 6px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Погода</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="stocksCheckBox">
+          <property name="styleSheet">
+           <string notr="true">QCheckBox{
+	color: white;
+}
+
+QCheckBox::indicator {
+   background-color: rgb(231, 231, 231);
+   border: 5px #000000;
+   padding: 5px;
+   border-radius: 6px;
+}
+
+QCheckBox::indicator:checked {
+	background-color: rgb(97, 137, 48);
+	border-radius: 6px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Курс акцій</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="currencyCheckBox">
+          <property name="styleSheet">
+           <string notr="true">QCheckBox{
+	color: white;
+}
+
+QCheckBox::indicator {
+   background-color: rgb(231, 231, 231);
+   border: 5px #000000;
+   padding: 5px;
+   border-radius: 6px;
+}
+
+QCheckBox::indicator:checked {
+	background-color: rgb(97, 137, 48);
+	border-radius: 6px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Курс валют</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="3">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="0">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -863,54 +1073,11 @@ border-image:  url(:money.ico);
      <x>0</x>
      <y>0</y>
      <width>852</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>Меню</string>
-    </property>
-    <addaction name="subsWeatherAction"/>
-    <addaction name="subsStocksAction"/>
-    <addaction name="subsValAction"/>
-    <addaction name="separator"/>
-    <addaction name="unsubsWeatherAction"/>
-    <addaction name="unsubsStocksAction"/>
-    <addaction name="undubsValAction"/>
-   </widget>
-   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="subsWeatherAction">
-   <property name="text">
-    <string>Підписатись на погоду</string>
-   </property>
-  </action>
-  <action name="subsStocksAction">
-   <property name="text">
-    <string>Підписатись на курс акцій</string>
-   </property>
-  </action>
-  <action name="subsValAction">
-   <property name="text">
-    <string>Підписатись на курс валют</string>
-   </property>
-  </action>
-  <action name="unsubsWeatherAction">
-   <property name="text">
-    <string>Відписатись від погоди</string>
-   </property>
-  </action>
-  <action name="unsubsStocksAction">
-   <property name="text">
-    <string>Відписатись від курсу акцій</string>
-   </property>
-  </action>
-  <action name="undubsValAction">
-   <property name="text">
-    <string>Відписатись від курсу валют</string>
-   </property>
-  </action>
  </widget>
  <resources/>
  <connections/>

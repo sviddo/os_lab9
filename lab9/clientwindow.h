@@ -15,11 +15,10 @@ class ClientWindow : public QMainWindow
 public:
     ClientWindow(QWidget *parent = nullptr);
     ~ClientWindow();
+    Ui::ClientWindow *ui;
 
 private slots:
-    void on_subsWeatherAction_triggered();
-
-private:
-    Ui::ClientWindow *ui;
+    void on_subscribeButton_clicked();
+    void on_unsubscribeButton_clicked();
 };
 #endif // CLIENTWINDOW_H
