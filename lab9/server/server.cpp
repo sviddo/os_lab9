@@ -7,15 +7,12 @@
 using namespace std;
 
 #define MAX_CLIENTS 10
-#define DEFAULT_BUFLEN 4096
+#define DEFAULT_BUFLEN 512
 
 #pragma comment(lib, "ws2_32.lib") // Winsock library
 #pragma warning(disable:4996)
 
 SOCKET server_socket;
-
-vector<string> history;
-
 
 typedef struct SocketData {
 	SOCKET socket;
@@ -77,7 +74,7 @@ DWORD WINAPI subscribe_stocks(LPVOID lpRaram)
 	while (true)
 	{
 		string stocks = "s" + to_string((float(rand()) / float((RAND_MAX)) * 140)) + "#" +
-			to_string((float(rand()) / float((RAND_MAX)) * 180)) + "#" + 
+			to_string((float(rand()) / float((RAND_MAX)) * 180)) + "#" +
 			to_string((float(rand()) / float((RAND_MAX)) * 130));
 
 		send_data(socket, stocks.c_str());
@@ -100,7 +97,6 @@ DWORD WINAPI subscribe_currency(LPVOID lpRaram)
 			to_string((float(rand()) / float((RAND_MAX)) * 50));
 
 		send_data(socket, currency.c_str());
-
 		Sleep(5000);
 	}
 }
@@ -135,28 +131,29 @@ DWORD WINAPI handle_socket_connection(LPVOID lpRaram)
 				{
 					*flag_weather = 0;
 					subscriptions[0] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)subscribe_weather, &args, 0, &id);
-				} 
+				}
 				if (converted_string[2] == ((char*)"1")[0])
 				{
 					*flag_stocks = 0;
 					subscriptions[1] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)subscribe_stocks, &args, 0, &id);
-				} 
+				}
 				if (converted_string[3] == ((char*)"1")[0])
 				{
 					*flag_currency = 0;
 					subscriptions[2] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)subscribe_currency, &args, 0, &id);
 				}
-			} else if(converted_string[0] == 'u')
+			}
+			else if (converted_string[0] == 'u')
 			{
 				if (converted_string[1] == ((char*)"1")[0])
 				{
 					TerminateThread(subscriptions[0], 0);
 				}
-				else if (converted_string[2] == ((char*)"1")[0])
+				if (converted_string[2] == ((char*)"1")[0])
 				{
 					TerminateThread(subscriptions[1], 0);
 				}
-				else if (converted_string[3] == ((char*)"1")[0])
+				if (converted_string[3] == ((char*)"1")[0])
 				{
 					TerminateThread(subscriptions[2], 0);
 				}
@@ -251,7 +248,7 @@ int main() {
 			printf("New connection, socket fd is %d, ip is: %s, port: %d\n", new_socket, inet_ntoa(address.sin_addr), ntohs(address.sin_port));
 
 			// populate arguments for socket and start handling it
-			SOCKET_DATA_PTR args = (SOCKET_DATA_PTR) HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
+			SOCKET_DATA_PTR args = (SOCKET_DATA_PTR)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
 				sizeof(SOCKET_DATA));;
 			args->socket = new_socket;
 			CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)handle_socket_connection, args, 0, &id);
