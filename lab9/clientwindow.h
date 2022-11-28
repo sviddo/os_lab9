@@ -19,5 +19,6 @@ public:
 
 private slots:
     void on_subscribeButton_clicked();
+    void on_unsubscribeButton_clicked();
 };
 #endif // CLIENTWINDOW_H
